@@ -1,24 +1,18 @@
 {
-  "buildCommand": "npm install",
-  "outputDirectory": "public",
-  "framework": "other",
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 60,
-      "memory": 1024
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
     }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  },
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "server.js"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
