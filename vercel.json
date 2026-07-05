@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm install",
   "outputDirectory": "public",
   "framework": "other",
   "functions": {
@@ -8,10 +8,17 @@
       "memory": 1024
     }
   },
-  "rewrites": [
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
